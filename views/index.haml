@@ -1,4 +1,6 @@
 %h1 Hey you!
 %form{:method => 'post'}
-  %input{:name => 'str',:type => 'text', :value => 'Type something!', :onclick => 'this.value="";'}
+  - unless @entry.errors.empty?
+    = partial(:errors, :locals => {'errors' => @entry.errors})
+  %input{:name => 'str',:type => 'text', :value => @entry.str, :onclick => 'this.value="";'}
   %button Speak!

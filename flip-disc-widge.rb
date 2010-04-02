@@ -1,30 +1,32 @@
 require 'rubygems'
 require 'sinatra'
-require 'lib/simple_helper'
+require 'mongo_mapper'
+MongoMapper.database = 'flip-disc'
+
+Dir["lib/*.rb"].each{|f| require "lib/#{File.basename(f)}" }
 
 helpers do
   include SimpleHelper
 end
 
+# available resources starts here ---------------
+
 get "/" do
+  @entry = DisplayQueue.new :str => 'say something!'
   haml :index
 end
 
 post "/" do
-  @display_str = sanitize params[:str]
-  haml :success
+  @entry = DisplayQueue.new :str => params[:str]
+  if @entry .save
+    haml :success
+  else
+    haml :index
+  end
 end
 
-__END__
-
-@@layout
-!!! 5
-%html
-  %head
-    %title flip-disc display widgy!
-    %link{:rel=>"stylesheet", :href=>"/stylesheets/reset.css"}
-    %link{:rel=>"stylesheet", :href=>"/stylesheets/style.css"}
-  %body
-    = yield
-
-
+get "/msgs" do
+  pub_at = (params[:old] && !params[:old].eql?('false')) ? {:$ne => nil} : nil
+  @queue_entries = DisplayQueue.all(:published_at => pub_at)
+  haml :msgs
+end

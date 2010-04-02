@@ -1,0 +1,5 @@
+environment: production
+daemonize: true
+pid: tmp/pids/thin.pid
+rackup: config.ru
+port: 2999

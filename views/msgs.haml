@@ -1,0 +1,11 @@
+-unless @queue_entries.empty?
+  -if (params[:old] && !params[:old].eql?('false'))
+    %h1 list of published entries
+  -else
+    %h1 List of unpublished entries
+  %ul
+    -@queue_entries.each do |entry|
+      %li= entry.str
+
+  %p= "total of #{@queue_entries.size}"
+%a{:href => "/"} back
