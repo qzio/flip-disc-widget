@@ -3,3 +3,4 @@ daemonize: true
 pid: tmp/pids/thin.pid
 rackup: config.ru
 port: 2999
+log: log/production.log

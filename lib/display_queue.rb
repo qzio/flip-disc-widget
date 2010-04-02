@@ -10,6 +10,6 @@ class DisplayQueue
   before_save :sanitize_str
 
   def sanitize_str
-    self.str = self.str.gsub(/[^A-Za-z0-9åäöÅÄÖ_!?\-\s]/,'_')
+    self.str = self.str.gsub(/[^A-Za-z0-9åäöÅÄÖ_!?\-\s]\./,'_')
   end
 end

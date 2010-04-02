@@ -2,5 +2,5 @@
 %form{:method => 'post'}
   - unless @entry.errors.empty?
     = partial(:errors, :locals => {'errors' => @entry.errors})
-  %input{:name => 'str',:type => 'text', :value => @entry.str, :onclick => 'this.value="";'}
-  %button Speak!
+  %input{:name => 'str',:type => 'text', :value => @entry.str, :onclick => 'this.value="";document.getElementById("submit_button").disabled=null'}
+  %button{:disabled => true, :id => 'submit_button'} Speak!

@@ -5,7 +5,12 @@
     %h1 List of unpublished entries
   %ul
     -@queue_entries.each do |entry|
-      %li= entry.str
+      %li
+        = "#{entry.created_at.strftime("%Y/%m/%d %H:%M")} |"
+        %span.highlight=entry.str
 
-  %p= "total of #{@queue_entries.size}"
+  %p
+    total of
+    %span.highlight=@queue_entries.size
+    entries
 %a{:href => "/"} back
