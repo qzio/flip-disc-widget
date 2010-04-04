@@ -1,7 +1,11 @@
 require 'rubygems'
 require 'sinatra'
 require 'mongo_mapper'
-MongoMapper.database = 'flip-disc'
+db_suffix = ''
+configure :test do
+  db_suffix = '-test'
+end
+MongoMapper.database = "flip-disc#{db_suffix}"
 
 Dir["lib/*.rb"].each{|f| require "lib/#{File.basename(f)}" }
 
