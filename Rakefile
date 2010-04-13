@@ -1,4 +1,4 @@
-require'flip-disc-widge'
+require'flip-disc-widget'
 
 namespace :flipdisc do
   desc "display the next message in the queue"

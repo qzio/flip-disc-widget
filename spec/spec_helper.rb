@@ -10,4 +10,4 @@ set :run, false
 set :raise_errors, true
 set :logging, false
 
-require File.join(File.dirname(__FILE__),'..','flip-disc-widge.rb')
+require File.join(File.dirname(__FILE__),'..','flip-disc-widget.rb')
