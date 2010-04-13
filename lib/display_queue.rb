@@ -17,4 +17,8 @@ class DisplayQueue
   def to_s
     self.str
   end
+
+  def font
+    (str.length > 14) ? 'large' : 'small'
+  end
 end

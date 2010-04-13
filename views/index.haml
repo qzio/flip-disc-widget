@@ -2,5 +2,5 @@
 %form{:method => 'post'}
   - unless @entry.errors.empty?
     = partial(:errors, :locals => {'errors' => @entry.errors})
-  %input{:name => 'str',:type => 'text', :value => @entry.str, :onclick => 'this.value="";document.getElementById("submit_button").disabled=null',:maxlength => '14'}
+  %input{:name => 'str',:type => 'text', :value => @entry.str, :onclick => 'this.value="";document.getElementById("submit_button").disabled=null',:maxlength => '140'}
   %button{:disabled => true, :id => 'submit_button', :onclick => 'this.form.submit();'} Speak!
