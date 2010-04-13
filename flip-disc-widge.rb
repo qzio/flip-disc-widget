@@ -23,6 +23,7 @@ end
 post "/" do
   @entry = DisplayQueue.new :str => params[:str]
   if @entry .save
+    system "rake flipdisc:display_next >> log/rake.log"
     haml :success
   else
     haml :index

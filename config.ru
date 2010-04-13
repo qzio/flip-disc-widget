@@ -7,5 +7,5 @@ require 'flip-disc-widge'
 if ENV['RAILS_ENV'] == 'production' || ENV['RAILS_ENV'] == 'triage'
   Haml::Template::options[:ugly] = true
 end
-use Rack::AnotherLogger
+#use Rack::AnotherLogger
 run Sinatra::Application
